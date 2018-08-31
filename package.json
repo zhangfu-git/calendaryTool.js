@@ -1,0 +1,27 @@
+{
+  "name": "CalendarTool",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "scripts": {
+    "test": "mocha -r intelli-espower-loader -r babel-core/register --require babel-polyfill test/**/*.test.js",
+    "start": "parcel src/index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "intelli-espower-loader": "^1.0.1",
+    "mocha": "^5.2.0",
+    "parcel-bundler": "^1.9.7",
+    "power-assert": "^1.6.0"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2"
+  }
+}
