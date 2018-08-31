@@ -34,6 +34,8 @@ export function getLastDay(y, m) {
  * 这里是根据： 基姆拉尔森计算公式: W = (d + 2 * m + 3 * (m + 1) / 5 + y + y / 4 - y / 100 + y / 400) mod 7
  */
 export function getWeekByDate(y, m, d) {
+  if (isString(y + m + d)) throw 'Uncaught TypeError: arg not number type';
+
   const startWeek = 1;
   if (m < 3) {
     m += 12;
@@ -137,12 +139,7 @@ export function getCalendarData(value = new Date()) {
   if (isString(value)) value = new Date(date);
   if (!isLegalDate(value)) throw 'Uncaught TypeError: not date type';
 
-  if (typeof value === 'string') {
-    if (value.indexOf('-') > -1) {
-      throw 'value format: 2018/8/30';
-    }
-  }
-  const date = value ? new Date(value) : new Date();
+  const date = value;
   const y = date.getFullYear();
   const m = date.getMonth();
   const d = date.getDate();
