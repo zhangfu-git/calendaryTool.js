@@ -1,13 +1,12 @@
 import {
-  getLastDayByPrevMonth,
-  getLastDayByCurrMonth,
-  getWeekByDate,
-  getWeekByCurrMonthLastDay,
-  getWeekByCurrMonthFirstDay,
+  getLastDayForPrevMonth,
+  getLastDayForCurrMonth,
+  getWeek,
+  getWeekForCurrMonthLastDay,
+  getWeekForCurrMonthFirstDay,
   getCurrMonthDays,
   getBeforeVacancyDays,
   getAfterVacancyDays,
-  getCalendarData,
 } from '../src/index.js';
 
 const assert = require('power-assert');
@@ -21,35 +20,35 @@ describe('test/calendarTool.test.js', () => {
 
   it('获取上个月的最后一天', () => {
     date.arr.forEach((item, index) => {
-      assert.equal(getLastDayByPrevMonth(item), date.value[index])
+      assert.equal(getLastDayForPrevMonth(item), date.value[index])
     });
   });
 
   it('获取当月的最后一天', () => {
     date.arr.forEach((item, index) => {
-      assert.equal(getLastDayByCurrMonth(new Date(item)), date.value[index+1])
+      assert.equal(getLastDayForCurrMonth(new Date(item)), date.value[index+1])
     });
   });
 
   it('获取某天为星期几', () => {
-    assert.equal(getWeekByDate(2018, 8, 31), 5);
+    assert.equal(getWeek(2018, 8, 31), 5);
 
-    assert.equal(getWeekByDate(2018, 9, 1), 6);
+    assert.equal(getWeek(2018, 9, 1), 6);
 
-    assert.equal(getWeekByDate(2018, 10, 1), 1);
+    assert.equal(getWeek(2018, 10, 1), 1);
   });
 
 
   it('获得当前月份，最后一天是星期几', () => {
-    assert.equal(getWeekByCurrMonthLastDay('2018-8-1'), 5);
-    assert.equal(getWeekByCurrMonthLastDay('2018-8-31'), 5);
-    assert.equal(getWeekByCurrMonthLastDay('2018-7-1'), 2);
-    assert.equal(getWeekByCurrMonthLastDay('2018-9-1'), 0);
+    assert.equal(getWeekForCurrMonthLastDay('2018-8-1'), 5);
+    assert.equal(getWeekForCurrMonthLastDay('2018-8-31'), 5);
+    assert.equal(getWeekForCurrMonthLastDay('2018-7-1'), 2);
+    assert.equal(getWeekForCurrMonthLastDay('2018-9-1'), 0);
   });
   
   it('获取当前月，第一天是星期几', () => {
-    assert.equal(getWeekByCurrMonthFirstDay('2018-8-1'), 3);
-    assert.equal(getWeekByCurrMonthFirstDay('2018-7-3'), 0);
+    assert.equal(getWeekForCurrMonthFirstDay('2018-8-1'), 3);
+    assert.equal(getWeekForCurrMonthFirstDay('2018-7-3'), 0);
   });
 
   it('获取当前月的所有天数，数组', () => {

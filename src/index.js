@@ -1,5 +1,5 @@
 // 获取上一个月最后一天
-export function getLastDayByPrevMonth(date = new Date()) {
+export function getLastDayForPrevMonth(date = new Date()) {
   if (isString(date)) date = new Date(date);
   if (!isLegalDate(date)) throw 'Uncaught TypeError: not date type';
 
@@ -10,7 +10,7 @@ export function getLastDayByPrevMonth(date = new Date()) {
 }
 
 // 获取当前月份最后一天
-export function getLastDayByCurrMonth(date = new Date()) {
+export function getLastDayForCurrMonth(date = new Date()) {
   if (isString(date)) date = new Date(date);
   if (!isLegalDate(date)) throw 'Uncaught TypeError: not date type';
   const y = date.getFullYear();
@@ -33,7 +33,7 @@ export function getLastDay(y, m) {
  * 
  * 这里是根据： 基姆拉尔森计算公式: W = (d + 2 * m + 3 * (m + 1) / 5 + y + y / 4 - y / 100 + y / 400) mod 7
  */
-export function getWeekByDate(y, m, d) {
+export function getWeek(y, m, d) {
   if (isString(y + m + d)) throw 'Uncaught TypeError: arg not number type';
 
   const startWeek = 1;
@@ -49,26 +49,26 @@ export function getWeekByDate(y, m, d) {
  * @return {number} 0 ~ 6 (星期日 ～ 星期六)
  * */
 
-export function getWeekByCurrMonthLastDay(date = new Date()) {
+export function getWeekForCurrMonthLastDay(date = new Date()) {
   if (isString(date)) date = new Date(date);
   if (!isLegalDate(date)) throw 'Uncaught TypeError: not date type';
 
   const y = date.getFullYear();
   const m = date.getMonth() + 1;
-  const currMonthLastDay = getLastDayByCurrMonth(date);
-  return getWeekByDate(y, m, currMonthLastDay);
+  const currMonthLastDay = getLastDayForCurrMonth(date);
+  return getWeek(y, m, currMonthLastDay);
 }
 
 /**
  * 获取当前月，第一天是星期几
 */
-export function getWeekByCurrMonthFirstDay(date = new Date()) {
+export function getWeekForCurrMonthFirstDay(date = new Date()) {
   if (isString(date)) date = new Date(date);
   if (!isLegalDate(date)) throw 'Uncaught TypeError: not date type';
 
   const y = date.getFullYear();
   const m = date.getMonth() + 1;
-  return getWeekByDate(y, m, 1);
+  return getWeek(y, m, 1);
 }
 
 /**
@@ -79,7 +79,7 @@ export function getCurrMonthDays(date = new Date()) {
   if (isString(date)) date = new Date(date);
   if (!isLegalDate(date)) throw 'Uncaught TypeError: not date type';
 
-  const currMonthLastDay = getLastDayByCurrMonth(date);
+  const currMonthLastDay = getLastDayForCurrMonth(date);
   let currMonthDays = [];
   for (let i = 1; i <= currMonthLastDay; i++) {
     currMonthDays.push(i);
@@ -94,8 +94,8 @@ export function getBeforeVacancyDays(date = new Date()) {
   if (isString(date)) date = new Date(date);
   if (!isLegalDate(date)) throw 'Uncaught TypeError: not date type';
 
-  const currMonthFirstDayWeek = getWeekByCurrMonthFirstDay(date);
-  let prevMonthLastDay = getLastDayByPrevMonth(date);
+  const currMonthFirstDayWeek = getWeekForCurrMonthFirstDay(date);
+  let prevMonthLastDay = getLastDayForPrevMonth(date);
   let days = [];
   for (let i = 0; i < currMonthFirstDayWeek; i++) {
     days.push(prevMonthLastDay);
@@ -112,7 +112,7 @@ export function getAfterVacancyDays(date = new Date()) {
   if (isString(date)) date = new Date(date);
   if (!isLegalDate(date)) throw 'Uncaught TypeError: not date type';
 
-  const currMonthLastDayWeek = getWeekByCurrMonthLastDay(date);
+  const currMonthLastDayWeek = getWeekForCurrMonthLastDay(date);
   let days = [];
 
   for (let i = 0; i < (6 - currMonthLastDayWeek); i++) {
