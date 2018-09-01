@@ -4,8 +4,11 @@ import {
   getWeekByDate,
   getWeekByCurrMonthLastDay,
   getWeekByCurrMonthFirstDay,
-  getCurrMonthDayArray,
-} from '../calendarTool.js';
+  getCurrMonthDays,
+  getBeforeVacancyDays,
+  getAfterVacancyDays,
+  getCalendarData,
+} from '../src/index.js';
 
 const assert = require('power-assert');
 
@@ -54,10 +57,16 @@ describe('test/calendarTool.test.js', () => {
     for (let i = 1; i <= 31; i++) {
       days.push(i);
     }
-    assert.equal(getCurrMonthDayArray('2018-8-1')[0], days[0]);
-    assert.equal(getCurrMonthDayArray('2018-8-1')[days.length-1], days[days.length-1]);
+    assert.equal(getCurrMonthDays('2018-8-1')[0], days[0]);
+    assert.equal(getCurrMonthDays('2018-8-1')[days.length-1], days[days.length-1]);
   });
 
-  
+  it('获取当前月的前的空缺days', () => {
+    assert.equal(getBeforeVacancyDays('2018-9-1')[0], 26);
+  });
+
+  it('获取当前月的后空缺days', () => {
+    assert.equal(getAfterVacancyDays('2018-9-1')[0], 1);
+  });
 
 });

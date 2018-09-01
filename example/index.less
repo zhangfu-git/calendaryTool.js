@@ -1,0 +1,106 @@
+@themeColor: #1385e5;
+@borderColor: #dfe0e4;
+@radius: 4px;
+
+.calendar {
+  width: 500px;
+  margin: 0 auto;
+  overflow: hidden;
+  color: rgba(0, 0, 0, 0.65);
+  border: 1px solid @borderColor;
+  padding: 10px;
+}
+
+.day {
+  padding: 10px 0;
+  color: rgba(0, 0, 0, 0.3);
+  display: inline-block;
+  width: Unit(100/7, %);
+  text-align: center;
+  border-radius: @radius;
+  cursor: pointer;
+  background-color: #fff;
+  transition: all .3s;
+  &:hover {
+    background-color: @themeColor;
+    color: #fff;
+  }
+}
+
+.week {
+  color: rgba(0, 0, 0, 0.65);
+  display: inline-block;
+  width: Unit(100/7, %);
+  text-align: center;
+  font-weight: 500;
+  padding: 10px 0;
+}
+
+.currMonthDay {
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.toDay {
+  color: #fff;
+  background-color: @themeColor;
+}
+
+.daysWeek {
+  border: 1px solid @borderColor;
+  border-radius: @radius;
+  padding: 10px;
+}
+
+.controlBox {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.prevBtn, .nextBtn {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  border-radius: @radius;
+  text-align: center;
+  color: #fff;
+  background-color: @themeColor;
+  transition: all .3s;
+  &:hover {
+    background-color: #196fb7;
+  }
+}
+
+.prevBtn {
+  background-image: url('./arrow_left.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.nextBtn {
+  background-image: url('./arrow-right.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.yearMonth {
+  flex: 1;
+  font-size: 30px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.saveBtn {
+  text-align: center;
+  font-size: 24px;
+  color: #fff;
+  border-radius: @radius;
+  padding: 10px 0;
+  margin-top: 10px;
+  background-color: @themeColor;
+  &:hover {
+    cursor: pointer;
+    background-color: #196fb7;
+  }
+}
