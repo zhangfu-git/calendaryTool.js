@@ -32,7 +32,7 @@ CalendarTool 一个构建日历的工具函数集，它提供了：
 
 
 下面用calendarTool.js构建一个日历组件：
-[!images]('./demo.gif')
+![效果图]('demo.gif')
 
 
 demo运行:
