@@ -94,14 +94,12 @@ class Calendar extends React.PureComponent {
 
     const $day = e.target;
     const index = $day.getAttribute('data-index');
-
+    if (!index) return;
     const { prevMonthLastDayPos, currMonthLastDayPos } = this.calendarData;
 
     let newYear = year;
     let newMonth = month;
     let newDay = +$day.innerText;
-
-    log(index, prevMonthLastDayPos)
 
     if (index <= prevMonthLastDayPos) {
       newMonth -= 1;
@@ -118,7 +116,6 @@ class Calendar extends React.PureComponent {
     }
 
     this.setState({
-      selectDay: index,
       year: newYear,
       month: newMonth,
       day: newDay,
