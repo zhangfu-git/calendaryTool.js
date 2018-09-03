@@ -1,20 +1,20 @@
 {
-  "name": "calendarTool",
+  "name": "calendar_tool.js",
   "version": "1.0.0",
   "description": "",
-  "main": "test.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "mocha -r intelli-espower-loader -r babel-core/register --require babel-polyfill test/**/*.test.js",
     "start": "parcel example/index.html"
   },
   "keywords": [],
-  "author": "",
+  "author": "zhangfu",
   "license": "ISC",
   "devDependencies": {
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "@babel/preset-stage-0": "^7.0.0",
     "autoprefixer": "^9.1.3",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",

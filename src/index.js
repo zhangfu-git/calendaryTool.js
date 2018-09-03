@@ -150,7 +150,7 @@ export function getCalendarData(value = new Date()) {
   const currMonthDays = getCurrMonthDays(date);
 
   const prevMonthLastDayPos = prevMonthVacancyDays.length - 1;
-  const currMonthLastDaysPos = prevMonthLastDayPos + currMonthDays.length;
+  const currMonthLastDayPos = prevMonthLastDayPos + currMonthDays.length;
 
   const days = [...prevMonthVacancyDays, ...currMonthDays, ...nextMonthVacancyDays];
 
@@ -163,7 +163,7 @@ export function getCalendarData(value = new Date()) {
     prevMonthVacancyDays,
     nextMonthVacancyDays,
     currMonthDays,
-    currMonthLastDaysPos,
+    currMonthLastDayPos,
     prevMonthLastDayPos,
   };
 };

@@ -95,7 +95,7 @@ class Calendar extends React.PureComponent {
     const $day = e.target;
     const index = $day.getAttribute('data-index');
 
-    const { prevMonthLastDayPos, currMonthLastDaysPos } = this.calendarData;
+    const { prevMonthLastDayPos, currMonthLastDayPos } = this.calendarData;
 
     let newYear = year;
     let newMonth = month;
@@ -109,7 +109,7 @@ class Calendar extends React.PureComponent {
         newMonth = 11;
         newYear -= 1;
       }
-    } else if (index > currMonthLastDaysPos) {
+    } else if (index > currMonthLastDayPos) {
       newMonth += 1;
       if (newMonth > 11) {
         newMonth = 0;
@@ -127,14 +127,14 @@ class Calendar extends React.PureComponent {
   renderDay = ({ day, index }) => {
     const currDay= this.state.day;
     const {
-      currMonthLastDaysPos,
+      currMonthLastDayPos,
       prevMonthLastDayPos,
     } = this.calendarData;
 
     let currMonthDay = true;
     let isToday = false;
 
-    if (index <= prevMonthLastDayPos || index > currMonthLastDaysPos) {
+    if (index <= prevMonthLastDayPos || index > currMonthLastDayPos) {
       currMonthDay = false;
     } else if (currDay === day) {
       isToday = true;
