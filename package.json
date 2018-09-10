@@ -2,10 +2,11 @@
   "name": "calendar_tool.js",
   "version": "1.0.1",
   "description": "",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "mocha -r intelli-espower-loader -r babel-core/register --require babel-polyfill test/**/*.test.js",
-    "start": "parcel example/index.html"
+    "start": "parcel example/index.html",
+    "dist": "parcel build src/index.js"
   },
   "keywords": [],
   "author": "zhangfu",
