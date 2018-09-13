@@ -1,15 +1,23 @@
 {
   "name": "calendar_tool.js",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "",
-  "main": "dist/index.js",
+  "main": "src/main.js",
   "scripts": {
     "test": "mocha -r intelli-espower-loader -r babel-core/register --require babel-polyfill test/**/*.test.js",
     "start": "parcel example/index.html",
     "dist": "parcel build src/index.js"
   },
-  "keywords": [],
-  "author": "zhangfu",
+  "keywords": [
+    "calendar",
+    "component",
+    "react",
+    "tool"
+  ],
+  "author": {
+    "name": "zhangfu",
+    "email": "403380433@qq.com"
+  },
   "license": "ISC",
   "devDependencies": {
     "@babel/preset-stage-0": "^7.0.0",

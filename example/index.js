@@ -7,7 +7,7 @@ import {
   getCalendarData,
   isString,
   isLegalDate,
-} from '../src/index.js';
+} from '../src/main.js';
 
 const log = console.log;
 

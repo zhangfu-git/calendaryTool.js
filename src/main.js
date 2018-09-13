@@ -1,27 +1,29 @@
 // 获取上一个月最后一天
-export function getLastDayForPrevMonth(date = new Date()) {
+export function getLastDayForPrevMonth(date) {
+  date = date && date || new Date();
   if (isString(date)) date = new Date(date);
   if (!isLegalDate(date)) throw 'Uncaught TypeError: not date type';
 
-  const y = date.getFullYear();
-  const m = date.getMonth();
+  var y = date.getFullYear();
+  var m = date.getMonth();
 
   return getLastDay(y, m);
 }
 
 // 获取当前月份最后一天
-export function getLastDayForCurrMonth(date = new Date()) {
+export function getLastDayForCurrMonth(date) {
+  date = date && date || new Date();
   if (isString(date)) date = new Date(date);
   if (!isLegalDate(date)) throw 'Uncaught TypeError: not date type';
-  const y = date.getFullYear();
-  const m = date.getMonth() + 1;
+  var y = date.getFullYear();
+  var m = date.getMonth() + 1;
 
   return getLastDay(y, m);
 }
 
 // 获取某个月份的最后一天
 export function getLastDay(y, m) {
-  const date = new Date(y, m, 1);
+  var date = new Date(y, m, 1);
   return new Date(date.getTime() - 1000 * 60 * 60 * 24).getDate();
 }
 
@@ -36,7 +38,7 @@ export function getLastDay(y, m) {
 export function getWeek(y, m, d) {
   if (isString(y + m + d)) throw 'Uncaught TypeError: arg not number type';
 
-  const startWeek = 1;
+  var startWeek = 1;
   if (m < 3) {
     m += 12;
     --y;
@@ -49,25 +51,27 @@ export function getWeek(y, m, d) {
  * @return {number} 0 ~ 6 (星期日 ～ 星期六)
  * */
 
-export function getWeekForCurrMonthLastDay(date = new Date()) {
+export function getWeekForCurrMonthLastDay(date) {
+  date = date && date || new Date();
   if (isString(date)) date = new Date(date);
   if (!isLegalDate(date)) throw 'Uncaught TypeError: not date type';
 
-  const y = date.getFullYear();
-  const m = date.getMonth() + 1;
-  const currMonthLastDay = getLastDayForCurrMonth(date);
+  var y = date.getFullYear();
+  var m = date.getMonth() + 1;
+  var currMonthLastDay = getLastDayForCurrMonth(date);
   return getWeek(y, m, currMonthLastDay);
 }
 
 /**
  * 获取当前月，第一天是星期几
 */
-export function getWeekForCurrMonthFirstDay(date = new Date()) {
+export function getWeekForCurrMonthFirstDay(date) {
+  date = date && date || new Date();
   if (isString(date)) date = new Date(date);
   if (!isLegalDate(date)) throw 'Uncaught TypeError: not date type';
 
-  const y = date.getFullYear();
-  const m = date.getMonth() + 1;
+  var y = date.getFullYear();
+  var m = date.getMonth() + 1;
   return getWeek(y, m, 1);
 }
 
@@ -76,12 +80,13 @@ export function getWeekForCurrMonthFirstDay(date = new Date()) {
  * @return {array} 当前月份所有天数组成的数组
  */
 export function getCurrMonthDays(date = new Date()) {
+  date = date && date || new Date();
   if (isString(date)) date = new Date(date);
   if (!isLegalDate(date)) throw 'Uncaught TypeError: not date type';
 
-  const currMonthLastDay = getLastDayForCurrMonth(date);
-  let currMonthDays = [];
-  for (let i = 1; i <= currMonthLastDay; i++) {
+  var currMonthLastDay = getLastDayForCurrMonth(date);
+  var currMonthDays = [];
+  for (var i = 1; i <= currMonthLastDay; i++) {
     currMonthDays.push(i);
   }
   return currMonthDays;
@@ -90,14 +95,15 @@ export function getCurrMonthDays(date = new Date()) {
 /**
  * 根据当前月的第一天为星期几，来获取日历开头的空缺位置的day
 */
-export function getBeforeVacancyDays(date = new Date()) {
+export function getBeforeVacancyDays(date) {
+  date = date && date || new Date();
   if (isString(date)) date = new Date(date);
   if (!isLegalDate(date)) throw 'Uncaught TypeError: not date type';
 
-  const currMonthFirstDayWeek = getWeekForCurrMonthFirstDay(date);
-  let prevMonthLastDay = getLastDayForPrevMonth(date);
-  let days = [];
-  for (let i = 0; i < currMonthFirstDayWeek; i++) {
+  var currMonthFirstDayWeek = getWeekForCurrMonthFirstDay(date);
+  var prevMonthLastDay = getLastDayForPrevMonth(date);
+  var days = [];
+  for (var i = 0; i < currMonthFirstDayWeek; i++) {
     days.push(prevMonthLastDay);
     prevMonthLastDay--;
   }
@@ -108,14 +114,15 @@ export function getBeforeVacancyDays(date = new Date()) {
 /**
  * 根据当前月的最后一天为星期几， 来获取日历结尾的空缺位置的day
 */
-export function getAfterVacancyDays(date = new Date()) {
+export function getAfterVacancyDays(date) {
+  date = date && date || new Date();
   if (isString(date)) date = new Date(date);
   if (!isLegalDate(date)) throw 'Uncaught TypeError: not date type';
 
-  const currMonthLastDayWeek = getWeekForCurrMonthLastDay(date);
-  let days = [];
+  var currMonthLastDayWeek = getWeekForCurrMonthLastDay(date);
+  var days = [];
 
-  for (let i = 0; i < (6 - currMonthLastDayWeek); i++) {
+  for (var i = 0; i < (6 - currMonthLastDayWeek); i++) {
     days.push(i + 1);
   }
   return days;
@@ -135,24 +142,25 @@ export function getAfterVacancyDays(date = new Date()) {
    currDays,
  }
 */
-export function getCalendarData(value = new Date()) {
+export function getCalendarData(value) {
+  value = value && value || new Date();
   if (isString(value)) value = new Date(value);
   if (!isLegalDate(value)) throw 'Uncaught TypeError: not date type';
 
-  const date = value;
-  const y = date.getFullYear();
-  const m = date.getMonth();
-  const d = date.getDate();
-  const w = date.getDay();
+  var date = value;
+  var y = date.getFullYear();
+  var m = date.getMonth();
+  var d = date.getDate();
+  var w = date.getDay();
 
-  const prevMonthVacancyDays = getBeforeVacancyDays(date);
-  const nextMonthVacancyDays = getAfterVacancyDays(date);
-  const currMonthDays = getCurrMonthDays(date);
+  var prevMonthVacancyDays = getBeforeVacancyDays(date);
+  var nextMonthVacancyDays = getAfterVacancyDays(date);
+  var currMonthDays = getCurrMonthDays(date);
 
-  const prevMonthLastDayPos = prevMonthVacancyDays.length - 1;
-  const currMonthLastDayPos = prevMonthLastDayPos + currMonthDays.length;
+  var prevMonthLastDayPos = prevMonthVacancyDays.length - 1;
+  var currMonthLastDayPos = prevMonthLastDayPos + currMonthDays.length;
 
-  const days = [...prevMonthVacancyDays, ...currMonthDays, ...nextMonthVacancyDays];
+  var days = [...prevMonthVacancyDays, ...currMonthDays, ...nextMonthVacancyDays];
 
   return {
     y,
@@ -176,7 +184,7 @@ export function isDate(date) {
 // 判断是否为一个合法的date对象
 export function isLegalDate(date) {
   if (isDate(date)) {
-    const time = date.getTime();
+    var time = date.getTime();
     if (time === time) {
       return true;
     }
