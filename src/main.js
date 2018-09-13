@@ -64,7 +64,7 @@ export function getWeekForCurrMonthLastDay(date) {
 
 /**
  * 获取当前月，第一天是星期几
-*/
+ */
 export function getWeekForCurrMonthFirstDay(date) {
   date = date && date || new Date();
   if (isString(date)) date = new Date(date);
@@ -79,7 +79,7 @@ export function getWeekForCurrMonthFirstDay(date) {
  * 获取当前月份的所有天数
  * @return {array} 当前月份所有天数组成的数组
  */
-export function getCurrMonthDays(date = new Date()) {
+export function getCurrMonthDays(date) {
   date = date && date || new Date();
   if (isString(date)) date = new Date(date);
   if (!isLegalDate(date)) throw 'Uncaught TypeError: not date type';
@@ -94,7 +94,7 @@ export function getCurrMonthDays(date = new Date()) {
 
 /**
  * 根据当前月的第一天为星期几，来获取日历开头的空缺位置的day
-*/
+ */
 export function getBeforeVacancyDays(date) {
   date = date && date || new Date();
   if (isString(date)) date = new Date(date);
@@ -113,7 +113,7 @@ export function getBeforeVacancyDays(date) {
 
 /**
  * 根据当前月的最后一天为星期几， 来获取日历结尾的空缺位置的day
-*/
+ */
 export function getAfterVacancyDays(date) {
   date = date && date || new Date();
   if (isString(date)) date = new Date(date);
@@ -160,19 +160,21 @@ export function getCalendarData(value) {
   var prevMonthLastDayPos = prevMonthVacancyDays.length - 1;
   var currMonthLastDayPos = prevMonthLastDayPos + currMonthDays.length;
 
-  var days = [...prevMonthVacancyDays, ...currMonthDays, ...nextMonthVacancyDays];
+  var days = prevMonthVacancyDays.concat(currMonthDays).concat(nextMonthVacancyDays);
+
+  // [...prevMonthVacancyDays, ...currMonthDays, ...nextMonthVacancyDays];
 
   return {
-    y,
-    m,
-    d,
-    w,
-    days,
-    prevMonthVacancyDays,
-    nextMonthVacancyDays,
-    currMonthDays,
-    currMonthLastDayPos,
-    prevMonthLastDayPos,
+    y: y,
+    m: m,
+    d: d,
+    w: w,
+    days: days,
+    prevMonthVacancyDays: prevMonthVacancyDays,
+    nextMonthVacancyDays: nextMonthVacancyDays,
+    currMonthDays: currMonthDays,
+    currMonthLastDayPos: currMonthLastDayPos,
+    prevMonthLastDayPos: prevMonthLastDayPos,
   };
 };
 
